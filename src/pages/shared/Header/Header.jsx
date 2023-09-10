@@ -5,8 +5,8 @@ import Banner from "../Banner/Banner";
 import "./Header.css";
 const Header = () => {
   return (
-    <>
-      <div className="navbar h-11 mb-5 shadow-xl p-3">
+    <div className="mb-10">
+      <div className="navbar h-11  shadow-xl p-3">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -77,7 +77,7 @@ const Header = () => {
       </div>
       <Banner />
 
-    </>
+    </div>
   );
 };
 
