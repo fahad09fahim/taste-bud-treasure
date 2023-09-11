@@ -1,18 +1,16 @@
 import React from 'react';
 import Header from '../pages/shared/Header/Header';
 import { Outlet } from 'react-router-dom';
-import Banner from "../pages/shared/Banner/Banner"
 import Footer from '../pages/shared/Footer/Footer';
 
-const Main = () => {
+const ChefLayout = () => {
     return (
         <div>
-            <Header/>
-            <Banner/>
+            <Header></Header>
             <Outlet/>
             <Footer/>
         </div>
     );
 };
 
-export default Main;
+export default ChefLayout;

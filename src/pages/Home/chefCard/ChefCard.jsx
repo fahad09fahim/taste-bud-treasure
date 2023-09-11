@@ -1,7 +1,8 @@
 import React from "react";
 import { FaHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const ChefCard = ({ chef }) => {
-  const { name, image, likes, num_recipes, experience } = chef;
+  const {id, name, image, likes, num_recipes, experience } = chef;
   const customCss = "text-md font-mono font-light";
   return (
     <div className="mx-auto my-5   rounded-xl shadow-xl p-5">
@@ -14,9 +15,9 @@ const ChefCard = ({ chef }) => {
         <h5 className="flex items-center gap-2"><FaHeart className="text-red-600"/> {likes}</h5>
         <h5 className={customCss}>Number of Recipes: {num_recipes}</h5>
       </div>
-      <button className="btn btn-outline btn-warning ">
+      <Link to={`/chef/${id}`} className="btn btn-outline btn-warning ">
         <span className="text-black font-mono text-sm">View Recipes</span>
-      </button>
+      </Link>
     </div>
   );
 };

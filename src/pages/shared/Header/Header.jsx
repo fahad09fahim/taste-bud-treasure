@@ -1,7 +1,6 @@
 import React from "react";
 import logo from "../../../assets/logo.png";
 import { Link } from "react-router-dom";
-import Banner from "../Banner/Banner";
 import "./Header.css";
 const Header = () => {
   return (
@@ -29,7 +28,7 @@ const Header = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-40 text-center"
             >
-              <Link className="custom-btn  my-2">
+              <Link to="/" className="custom-btn  my-2">
                 <span>Home</span>
               </Link>
 
@@ -51,7 +50,7 @@ const Header = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal flex items-center gap-2 ">
-            <Link className="custom-btn">
+            <Link to="/" className="custom-btn">
               <span className="mt-1">Home</span >
             </Link>
 
@@ -75,7 +74,7 @@ const Header = () => {
             </div>
           </div>
       </div>
-      <Banner />
+     
 
     </div>
   );

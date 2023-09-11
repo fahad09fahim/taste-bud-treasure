@@ -1,11 +1,11 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import ChefCard from "../chefCard/ChefCard";
+import SubBanner from "../../shared/sub-banner/SubBanner";
 
 const Chefs = () => {
   const chefs = useLoaderData();
-  console.log(chefs);
-  return (
+  return (<>
     <div className=" min-h-screen  mx-auto mt-10">
       <h1 className="text-center tracking-wide font-mono text-2xl lg:text-4xl mb-5  ">
         Explore Most <span className="text-lime-500">Popular</span> Chef.
@@ -16,6 +16,7 @@ const Chefs = () => {
         ))}
       </div>
     </div>
+     <SubBanner/></>
   );
 };
 
