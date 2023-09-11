@@ -26,7 +26,7 @@ const router  = createBrowserRouter([
         children:[
             {
                 path:"/chef/:id",
-                loader:({params})=>fetch(`https://taste-bud-server-mg7kjan6x-fahad09fahim.vercel.app/${params.id}`),
+                loader:({params})=>fetch(`https://taste-bud-server-mg7kjan6x-fahad09fahim.vercel.app/chef/${params.id}`),
                 element:<ChefDetails/>
             }
         ]
