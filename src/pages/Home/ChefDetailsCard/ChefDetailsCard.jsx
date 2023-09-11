@@ -1,9 +1,9 @@
 import React from "react";
-import { FaHeart } from "react-icons/fa";
+import { FaHeart, FaRegStar, FaStar } from "react-icons/fa";
 import ChefRecipe from "./ChefRecipe";
 
 const ChefDetailsCard = ({ detail }) => {
-  const { chef, rating, recipe } = detail;
+  const { chef } = detail;
   return (
    <> <div className="flex justify-center">
       {/*chef details----------- */}
@@ -20,7 +20,7 @@ const ChefDetailsCard = ({ detail }) => {
               likes: {chef.likes}
               <FaHeart className="text-red-600" />
             </p>
-            
+          
           </div>
         </div>
       </div>
