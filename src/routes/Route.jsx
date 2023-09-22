@@ -1,9 +1,11 @@
-import React, { Children } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Main from '../layout/Main';
 import Chefs from '../pages/Home/Chef/Chefs';
 import ChefDetails from '../pages/Home/ChefDetails/ChefDetails';
 import ChefLayout from '../layout/ChefLayout';
+import Login from '../pages/Login/Login';
+import AuthLayout from '../layout/AuthLayout';
+import SignUp from '../pages/signup/SignUp';
 
 
 const router  = createBrowserRouter([
@@ -18,6 +20,7 @@ const router  = createBrowserRouter([
                 },
                 element:<Chefs/>
             }
+            
         ]
     },
     {
@@ -30,6 +33,21 @@ const router  = createBrowserRouter([
                 element:<ChefDetails/>
             }
         ]
+    },
+    {
+        path:"/",
+        element:<AuthLayout/>,
+        children:[
+            {
+                path:"/login",
+                element:<Login/>
+            },
+            {
+                path:"/signup",
+                element:<SignUp/>
+            }
+        ]
+        
     }
 ])
 

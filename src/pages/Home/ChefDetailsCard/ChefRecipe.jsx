@@ -1,9 +1,9 @@
-import React from "react";
+
 import { Link,  } from "react-router-dom";
 import ChefRecipeDetails from './ChefRecipeDetails';
 
 const ChefRecipe = ({ detail }) => {
-  const { chef_id,chef, rating, recipe} = detail;
+  const { chef, recipe} = detail;
   return (
    <> <div className="lg:mx-44 ">
       <div className="card text-center box-border shadow-lg rounded-lg ">

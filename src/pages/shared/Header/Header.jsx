@@ -66,7 +66,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end mr-6 hidden lg:flex">
-          <Link className="custom-btn"><span>Log In</span></Link>
+          <Link to="/login" className="custom-btn"><span>Log In</span></Link>
         </div>
         <div className="avatar navbar-end lg:hidden sm:flex md:flex">
             <div className="w-7 ml-3 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
