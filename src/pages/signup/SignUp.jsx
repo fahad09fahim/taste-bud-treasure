@@ -3,7 +3,8 @@ import { IoLogoFacebook } from "react-icons/io";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
+import { AuthContext } from "../../provider/AuthProvider";
+
 
 
 

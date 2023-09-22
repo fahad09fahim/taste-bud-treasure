@@ -3,14 +3,17 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import img from "../../assets/image.jpg";
 import { useContext } from "react";
-import  { AuthContext } from "../../Provider/AuthProvider";
+import { AuthContext } from "../../provider/AuthProvider";
+
 
 const Login = () => {
-  const { signinUser } = useContext(AuthContext);
+  const { signinUser ,handleGoogleLogin } = useContext(AuthContext);
 
 const navigate = useNavigate()
 const location = useLocation()
 const from = location.state?.from?.pathname || "/"
+
+
   
   const handleLogin = (e) => {
     e.preventDefault();
@@ -86,9 +89,9 @@ const from = location.state?.from?.pathname || "/"
                 <button>
                   <IoLogoFacebook className="h-7 w-7 text-blue-600" />
                 </button>
-                <button>
+                <Link  onClick={handleGoogleLogin} >
                   <FcGoogle className="h-7 w-7" />
-                </button>
+                </Link>
               </div>
               <h3 className="text-center">
                 New to Taste Bud?{" "}

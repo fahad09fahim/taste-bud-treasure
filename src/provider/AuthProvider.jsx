@@ -1,6 +1,15 @@
 import { createContext, useEffect, useState } from "react";
 import app from "./../firebase/firebase.config";
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
+
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -8,37 +17,53 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  //   google login
 
- const createUser = (email, password)=>{
+  const googleProvider = new GoogleAuthProvider();
+
+
+  const handleGoogleLogin = () => {
     setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password)
- }
- const signinUser = (email, password)=>{
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const user = result.user;
+       
+          setUser(user);
+   
+      })
+      .catch((err) => console.log(err.massage));
+  };
+
+  const createUser = (email, password) => {
     setLoading(true);
-    return signInWithEmailAndPassword(auth,email,password)
- }
- const logOut = ()=>{
-    setLoading(true)
-    return signOut(auth)
- }  
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+  const signinUser = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+  const logOut = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
 
- useEffect(()=>{
-    const unsubscribe = onAuthStateChanged(auth, loggedUser=>{
-        setUser(loggedUser);
-        setLoading(false);
-    })
-    return ()=>{
-        unsubscribe()
-    }
- },[])
-
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
+      setUser(loggedUser);
+      setLoading(false);
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   const userInfo = {
     user,
     loading,
     createUser,
     signinUser,
-    logOut
+    logOut,
+    handleGoogleLogin,
   };
 
   return (

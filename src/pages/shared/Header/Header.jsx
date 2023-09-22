@@ -84,7 +84,7 @@ const Header = () => {
          <button onClick={handleLogout} className="custom-btn">Log out</button>         :
          <Link className="custom-btn" to="/login">Log in</Link>}
         </div>
-        { user && <div className="avatar navbar-end lg:hidden sm:flex md:flex">
+        { user && <div className="avatar navbar-center  sm:flex md:flex">
             <div className="w-7 ml-3 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
               <img src={user?.photoURL} alt="" />
             </div>
