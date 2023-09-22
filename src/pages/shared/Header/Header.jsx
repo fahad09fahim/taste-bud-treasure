@@ -1,8 +1,20 @@
-import React from "react";
+import { useContext } from "react";
 import logo from "../../../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
+import { AuthContext } from "../../../Provider/AuthProvider";
 const Header = () => {
+  const {user , logOut} = useContext(AuthContext)
+  const navigate = useNavigate()
+
+  const handleLogout = ()=>{
+    logOut()
+    .then(()=>{
+    navigate('/')  
+    })
+    .catch(err=> console.log(err))
+  }
+  
   return (
     <div className="mb-10">
       <div className="navbar h-11  shadow-xl p-3">
@@ -36,7 +48,9 @@ const Header = () => {
                 <span>Blog</span>
               </Link>
               
-          <Link className="custom-btn">Log in</Link>
+         { user?
+         <button onClick={handleLogout} className="custom-btn">Log out</button>         :
+         <Link className="custom-btn" to="/login">Log in</Link>}
 
             </ul>
           </div>
@@ -58,21 +72,23 @@ const Header = () => {
               <span>Blog</span>
             </Link>
 
-            <div className="avatar">
+            { user && <div className="avatar navbar-end lg:hidden sm:flex md:flex">
             <div className="w-7 ml-3 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img src="" alt="" />
+              <img src={user?.photoURL} alt="" />
             </div>
-          </div>
+          </div>}
           </ul>
         </div>
         <div className="navbar-end mr-6 hidden lg:flex">
-          <Link to="/login" className="custom-btn"><span>Log In</span></Link>
+        { user?
+         <button onClick={handleLogout} className="custom-btn">Log out</button>         :
+         <Link className="custom-btn" to="/login">Log in</Link>}
         </div>
-        <div className="avatar navbar-end lg:hidden sm:flex md:flex">
+        { user && <div className="avatar navbar-end lg:hidden sm:flex md:flex">
             <div className="w-7 ml-3 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img src="" alt="" />
+              <img src={user?.photoURL} alt="" />
             </div>
-          </div>
+          </div>}
       </div>
      
 

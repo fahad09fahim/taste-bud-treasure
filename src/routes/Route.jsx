@@ -6,6 +6,7 @@ import ChefLayout from '../layout/ChefLayout';
 import Login from '../pages/Login/Login';
 import AuthLayout from '../layout/AuthLayout';
 import SignUp from '../pages/signup/SignUp';
+import PrivetRoute from './PrivetRoute';
 
 
 const router  = createBrowserRouter([
@@ -30,7 +31,7 @@ const router  = createBrowserRouter([
             {
                 path:"/chef/:id",
                 loader:({params})=>fetch(`https://taste-bud-server-mg7kjan6x-fahad09fahim.vercel.app/chef/${params.id}`),
-                element:<ChefDetails/>
+                element:<PrivetRoute><ChefDetails/></PrivetRoute>
             }
         ]
     },

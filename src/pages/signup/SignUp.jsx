@@ -1,7 +1,7 @@
 
 import { IoLogoFacebook } from "react-icons/io";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 
@@ -10,7 +10,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 const SignUp = () => {
    const {createUser}= useContext(AuthContext)
  
-  
+    const navigate = useNavigate()
     const handlesignUp = e =>{
         e.preventDefault()
         const form = e.target;
@@ -21,6 +21,7 @@ const SignUp = () => {
         .then(res=>{
           const user = res.user;
           console.log(user)
+          navigate('/')
         })
         .catch(err=>{
           console.log(err)

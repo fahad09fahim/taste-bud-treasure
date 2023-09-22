@@ -1,12 +1,17 @@
 import { IoLogoFacebook } from "react-icons/io";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import img from "../../assets/image.jpg";
 import { useContext } from "react";
 import  { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
   const { signinUser } = useContext(AuthContext);
+
+const navigate = useNavigate()
+const location = useLocation()
+const from = location.state?.from?.pathname || "/"
+  
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -16,7 +21,7 @@ const Login = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
-        alert("user login successfully");
+        navigate(from,{replace:true})
         
       })
       .catch((err) => {
